@@ -13,6 +13,7 @@ jobs:
         uses: actions/setup-java@v4.2.1
         with:
           java-version: 21
+          distribution: jdk
       - name: Setup Maven
         uses: stCarolas/setup-maven@v5
       - name: Build Jar
