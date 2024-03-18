@@ -16,10 +16,8 @@ jobs:
         with:
           java-version: '21'
           distribution: 'corretto'
-      - name: Setup Maven
-        uses: stCarolas/setup-maven@v5
       - name: Build Jar
-        run: mvn install
+        run: ./mvnw install
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -29,11 +27,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: List target directory
-        run: ls -la
       - name: Build and push
         uses: docker/build-push-action@v5.3.0
         with:
-          context: /home/runner/work/java-graphql-demo/java-graphql-demo
+          context: .
           push: true
           tags: chiyoi/java-graphql-demo:latest
