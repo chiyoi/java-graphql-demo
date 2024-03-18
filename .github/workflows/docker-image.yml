@@ -12,8 +12,8 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
         with:
-          java-version: 21
-          distribution: jdk
+          java-version: '21'
+          distribution: 'corretto'
       - name: Setup Maven
         uses: stCarolas/setup-maven@v5
       - name: Build Jar
