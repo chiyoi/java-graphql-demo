@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.1.2
       - name: Setup Java JDK
         uses: actions/setup-java@v4.2.1
         with:
@@ -29,8 +29,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: List target directory
+        run: ls -la
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v5.3.0
         with:
+          context: /home/runner/work/java-graphql-demo/java-graphql-demo
           push: true
           tags: chiyoi/java-graphql-demo:latest
