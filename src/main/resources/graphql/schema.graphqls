@@ -1,16 +1,16 @@
 type Query {
-    bookById(id: ID): Book
+  items: [Item!]!
+  item(id: ID!): Item
 }
 
-type Book {
-    id: ID
-    name: String
-    pageCount: Int
-    author: Author
+type Mutation {
+  createItem(text: String!): Item!
+  updateItem(id: ID!, text: String, completed: Boolean): Item!
+  deleteItem(id: ID!): Item!
 }
 
-type Author {
-    id: ID
-    firstName: String
-    lastName: String
+type Item {
+  id: ID!
+  text: String!
+  completed: Boolean!
 }
